@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.playerPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}

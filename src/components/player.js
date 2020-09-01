@@ -1,6 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Tokens from '../private/appTokens'
+import URL from '../private/url'
 
-const Players = ({ stats: {data}, player_id }) => {
+
+//Use this for other fetches in same way
+const Players = ({ player_id }) => {
+  const [stat, setStat] = useState(null)
+  useEffect(()=>{
+    fetch(URL.playerStat)
+        .then(res => res.json())
+        .then((data) => {
+            setStat({ stats: data, player_id: Tokens.playerID})
+        })
+        .catch(console.log)
+  },[])
+
+  if(!stat) return <center><h1>Loading Stats...</h1></center>
+  const data = stat.stats.data
+  
+
       const Data = {
         nickname: data[player_id].nickname,
         winRatio: (data[player_id].statistics.all.wins / data[player_id].statistics.all.battles * 100).toFixed(2) + '%',
