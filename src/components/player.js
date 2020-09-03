@@ -1,24 +1,49 @@
 import React, { useEffect, useState } from 'react'
-import Tokens from '../private/appTokens'
+// import Tokens from '../private/appTokens'
 import URL from '../private/url'
-
+import Search from './search'
 
 //Use this for other fetches in same way
-const Players = ({ player_id }) => {
+const Players = () => {
   const [stat, setStat] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [searchValue, setSearchValue] = useState(null)
+  console.log(URL.playerSearch)
   useEffect(()=>{
-    fetch(URL.playerStat)
+    if(!searchValue) return
+    setIsLoading(true)
+    fetch(URL.playerSearch + searchValue)
+        .then(res => res.json())
+        .then(data=>fetch(URL.playerStat + data.data[0].account_id))
         .then(res => res.json())
         .then((data) => {
-            setStat({ stats: data, player_id: Tokens.playerID})
+          console.log(data)
+            setStat({ stats: data })
+            // setIsLoading(false)
         })
         .catch(console.log)
-  },[])
+  },[searchValue])
 
+
+
+  // componentDidMount() {
+    //   fetch('https://api.wotblitz.com/wotb/account/list/?application_id=6793a776acfe9cdc9069f95f083331a4&search=' + search.name)
+    //       .then(res => res.json())
+    //       .then(data=>{fetch('https://api.wotblitz.com/wotb/account/info/?application_id=6793a776acfe9cdc9069f95f083331a4' + '&account_id=' + data.account_id )})
+    //       .then((data) => {
+    //           this.setState({ stats: data })
+    //       })
+    //       .catch(console.log)
+    // }
+
+
+  if(!isLoading && !stat) return <div className="player-search"><Search onSubmit={setSearchValue}/></div>
   if(!stat) return <center><h1>Loading Stats...</h1></center>
   const data = stat.stats.data
-  
+  const player_id = Object.keys(data)[0]
+  console.log(data)
 
+console.log(data)
       const Data = {
         nickname: data[player_id].nickname,
         winRatio: (data[player_id].statistics.all.wins / data[player_id].statistics.all.battles * 100).toFixed(2) + '%',
@@ -47,34 +72,45 @@ const Players = ({ player_id }) => {
       }
       console.log(data)
       return (
-        <div>
-          <center><h1>Stats List</h1></center>
-          <center><h4>Nickname: {Data.nickname} </h4></center>
-          {/* <center><h4>WN8: {} </h4></center> */}
-          {/* <center><h4>WN7: {} </h4></center> */}
-          <center><h4>Win Ratio: {Data.winRatio} </h4></center>
-          <center><h4>Total Battles: {Data.battles} </h4></center>
-          <center><h4>Wins: {Data.wins} </h4></center>
-          <center><h4>Losses: {Data.losses} </h4></center>
-          <center><h4>Last Battle: {Data.lastBattle} </h4></center>
-          <center><h4>Damage Ratio: {Data.damageRatio} </h4></center>
-          <center><h4>Average Damage Dealt: {Data.avgDamage} </h4></center>
-          <center><h4>Average Damage Received: {Data.avgDmgReceived} </h4></center>
-          <center><h4>Total Damage Received: {Data.damage} </h4></center>
-          <center><h4>Total Damage Received: {Data.dmgReceived} </h4></center>
-          <center><h4>K/D: {Data.kdr} </h4></center>
-          <center><h4>Kills: {Data.kills} </h4></center>
-          <center><h4>Deaths: {Data.deaths} </h4></center>
-          <center><h4>Spotted: {Data.spotted} </h4></center>
-          <center><h4>Max XP: {Data.maxXP} </h4></center>
-          <center><h4>Hit Ratio: {Data.hitRatio} </h4></center>
-          <center><h4>Accuracy: {Data.accuracy} </h4></center>
-          <center><h4>Shots: {Data.shots} </h4></center>
-          <center><h4>Hits: {Data.hits} </h4></center>
-          <center><h4>Survived: {Data.survived} </h4></center>
-          <center><h4>Win and Survived: {Data.winSurvive} </h4></center>
-          <center><h4>Total XP: {Data.totalXP} </h4></center>
-          <center><h4>Average XP: {Data.avgXP} </h4></center>
+        <div className="stats-main">
+          <center><h1>{Data.nickname}</h1></center>
+          <div className="stats-div">
+            <div className="main-stats">
+              {/* <center>WN8: {} </center> */}
+              {/* <center>WN7: {} </center> */}
+              <center><h2>Main Stats</h2></center>
+              <center>Win Ratio: {Data.winRatio} </center>
+              <center>Total Battles: {Data.battles} </center>
+              <center>Average Damage: {Data.avgDamage} </center>
+              <center>Average XP: {Data.avgXP} </center>
+              <center>K/D: {Data.kdr} </center>
+              <center>Damage Ratio: {Data.damageRatio} </center>
+              <center>Hit Ratio: {Data.hitRatio} </center>
+              <center>Accuracy: {Data.accuracy} </center>
+            </div>
+            <div className="kd">
+              <center><h2>Secondary Stats</h2></center>
+              <center>Wins: {Data.wins} </center>
+              <center>Losses: {Data.losses} </center>
+              <center>Survived: {Data.survived} </center>
+              <center>Win and Survived: {Data.winSurvive} </center>
+              <center>Average Damage Received: {Data.avgDmgReceived} </center>
+              <center>Total Damage Received: {Data.damage} </center>
+              <center>Total Damage Received: {Data.dmgReceived} </center>
+              <center>Kills: {Data.kills} </center>
+              <center>Deaths: {Data.deaths} </center>
+              
+            </div>
+            <div className="other-stats">
+              <center><h2>Other Stats</h2></center>
+              <center>Spotting Ratio: {Data.spotted} </center>
+              <center>Max XP: {Data.maxXP} </center>
+              <center>Shots: {Data.shots} </center>
+              <center>Hits: {Data.hits} </center>
+              <center>Total XP: {Data.totalXP} </center>
+              <center>Last Battle: {Data.lastBattle} </center>
+            </div>
+          </div>
         </div>
       )
     };

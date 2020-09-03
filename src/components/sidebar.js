@@ -23,7 +23,7 @@ class Sidebar extends Component {
                                     <MenuItem>
                                         <Link to="/clan">Clan</Link>
                                     </MenuItem>
-                                    <MenuItem>
+                                    {/* <MenuItem>
                                         <Link to="/players">Players</Link>
                                     </MenuItem>
                                     <MenuItem>
@@ -34,7 +34,7 @@ class Sidebar extends Component {
                                     </MenuItem>
                                     <MenuItem>
                                     <Link to="/hof">Hall of Fame</Link>
-                                    </MenuItem>
+                                    </MenuItem> */}
                                 </Menu>
                         </ProSidebar>                    
                 </div>

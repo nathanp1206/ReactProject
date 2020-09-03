@@ -5,11 +5,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ThemeProvider } from "@chakra-ui/core";
 
+let root = document.getElementById('root')
+
 ReactDOM.render(
   <ThemeProvider>
     <App />
   </ThemeProvider>,
-  document.getElementById('root')
+  document.getElementById('root'),
+  root.setAttribute("class", "root")
 );
 
 // If you want your app to work offline and load faster, you can change

@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import PlayerData from './components/PlayerData'
+import Data from './components/Data'
+import './App.css'
 
 class App extends Component {
     render() {
         return (
-          <PlayerData />
+          <Data />
         )
     }
 }
