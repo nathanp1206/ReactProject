@@ -62,16 +62,17 @@ const Clans = () => {
         members: data[clan_id].members_ids
       }
       return (
-        <div>
-          <center><h1>Stats List</h1></center>
-          <center><h4>Name: {Data.name} </h4></center>
-          {/* <center><h4>WN8: {} </h4></center> */}
-          {/* <center><h4>WN7: {} </h4></center> */}
-          <center><h4>Tag: {Data.tag} </h4></center>
-          <center><h4>Motto: {Data.motto} </h4></center>
-          <center><h4>Description: {Data.desc} </h4></center>
-          <center><h4>Members: {Data.memCount} </h4></center>
-          <center><h4>Created At: {Data.created}</h4></center>
+        <div className="stats-main">
+          <center><h1>{Data.name} </h1></center>
+          <div className="main-stats2">
+            {/* <center><h4>WN8: {} </h4></center> */}
+            {/* <center><h4>WN7: {} </h4></center> */}
+            <center><h4>Tag: {Data.tag} </h4></center>
+            <center><h4>Motto: {Data.motto} </h4></center>
+            <center><h4>Description: {Data.desc} </h4></center>
+            <center><h4>Members: {Data.memCount} </h4></center>
+            <center><h4>Created At: {Data.created}</h4></center>
+          </div>
         </div>
       )
     };

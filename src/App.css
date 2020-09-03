@@ -29,7 +29,6 @@ html, body, .root {
   max-width: 250vh;
   max-height: 400vh;
   height: 100%;
-  align-content: center;
 }
 
 .search {
@@ -109,4 +108,24 @@ button {
   flex-direction: row;
   justify-content: space-evenly;
   height: 100%;
+}
+
+.main-stats2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  max-height: 190vh;
+  max-width: 150vh;
+  height: 100%;
+  width: 100%;
+  border-radius: 5%;
+  align-self: center;
+}
+
+.stats-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
