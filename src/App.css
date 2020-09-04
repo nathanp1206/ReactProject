@@ -11,7 +11,7 @@ html, body, .root {
   max-height: 400vh;
   max-width: 250vh;
   width: 100%;
-  background-color: darkgray;
+  background-color: rgb(122, 122, 122);
 }
 
 .pro-menu, .pro-sidebar-layout, .pro-sidebar-inner, .pro-sidebar, .playerPage, .sidebar{
@@ -90,17 +90,24 @@ button {
   background-position: center;
 }
 
-.main-stats, .other-stats, .kd, ul {
+.main-stats, .other-stats, .kd {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     max-height: 100vh;
     max-width: 50vh;
-    height: 100%;
+    height: 80%;
     width: 100%;
     border-radius: 5%;
     vertical-align: middle;
     align-self: center;
     align-content: center;
+    background-color: white;
+    position: relative;
+
+}
+
+.main-stats:hover, .other-stats:hover, .kd:hover {
+  margin-top: -3vh;
 }
 
 .stats-div {
@@ -108,6 +115,7 @@ button {
   flex-direction: row;
   justify-content: space-evenly;
   height: 100%;
+  width: 100%;
 }
 
 .main-stats2 {
@@ -128,4 +136,23 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-height: 100vh;
+  height: 100%;
+  width: 100%;  
+}
+
+.topBlock {
+  position: absolute;
+  top: 0;
+  background-color: rgb(41, 41, 41);
+  height: 10%;
+  width: 100%;
+  margin-bottom: 10vh;
+  border-radius: 15px 15px 0 0;
+}
+
+.filler {
+  position: absolute;
+  top: 10%;
+  width: 100%;
 }

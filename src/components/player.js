@@ -24,8 +24,6 @@ const Players = () => {
         .catch(console.log)
   },[searchValue])
 
-
-
   // componentDidMount() {
     //   fetch('https://api.wotblitz.com/wotb/account/list/?application_id=6793a776acfe9cdc9069f95f083331a4&search=' + search.name)
     //       .then(res => res.json())
@@ -75,40 +73,50 @@ console.log(data)
         <div className="stats-main">
           <center><h1>{Data.nickname}</h1></center>
           <div className="stats-div">
+            
             <div className="main-stats">
               {/* <center>WN8: {} </center> */}
               {/* <center>WN7: {} </center> */}
-              <center><h2>Main Stats</h2></center>
-              <center>Win Ratio: {Data.winRatio} </center>
-              <center>Total Battles: {Data.battles} </center>
-              <center>Average Damage: {Data.avgDamage} </center>
-              <center>Average XP: {Data.avgXP} </center>
-              <center>K/D: {Data.kdr} </center>
-              <center>Damage Ratio: {Data.damageRatio} </center>
-              <center>Hit Ratio: {Data.hitRatio} </center>
-              <center>Accuracy: {Data.accuracy} </center>
+              <div className="topBlock"></div>
+              <div className="filler">
+                <center><h2>Main Stats</h2></center>
+                <center>Win Ratio: {Data.winRatio} </center>
+                <center>Total Battles: {Data.battles} </center>
+                <center>Average Damage: {Data.avgDamage} </center>
+                <center>Average XP: {Data.avgXP} </center>
+                <center>K/D: {Data.kdr} </center>
+                <center>Damage Ratio: {Data.damageRatio} </center>
+                <center>Hit Ratio: {Data.hitRatio} </center>
+                <center>Accuracy: {Data.accuracy} </center>
+              </div>
             </div>
+            
             <div className="kd">
-              <center><h2>Secondary Stats</h2></center>
-              <center>Wins: {Data.wins} </center>
-              <center>Losses: {Data.losses} </center>
-              <center>Survived: {Data.survived} </center>
-              <center>Win and Survived: {Data.winSurvive} </center>
-              <center>Average Damage Received: {Data.avgDmgReceived} </center>
-              <center>Total Damage Received: {Data.damage} </center>
-              <center>Total Damage Received: {Data.dmgReceived} </center>
-              <center>Kills: {Data.kills} </center>
-              <center>Deaths: {Data.deaths} </center>
-              
+              <div className="topBlock"></div>
+              <div className="filler">
+                <center><h2>Secondary Stats</h2></center>
+                <center>Wins: {Data.wins} </center>
+                <center>Losses: {Data.losses} </center>
+                <center>Survived: {Data.survived} </center>
+                <center>Win and Survived: {Data.winSurvive} </center>
+                <center>Average Damage Received: {Data.avgDmgReceived} </center>
+                <center>Total Damage Received: {Data.damage} </center>
+                <center>Total Damage Received: {Data.dmgReceived} </center>
+                <center>Kills: {Data.kills} </center>
+                <center>Deaths: {Data.deaths} </center>
+              </div>
             </div>
             <div className="other-stats">
-              <center><h2>Other Stats</h2></center>
-              <center>Spotting Ratio: {Data.spotted} </center>
-              <center>Max XP: {Data.maxXP} </center>
-              <center>Shots: {Data.shots} </center>
-              <center>Hits: {Data.hits} </center>
-              <center>Total XP: {Data.totalXP} </center>
-              <center>Last Battle: {Data.lastBattle} </center>
+              <div className="topBlock"></div>
+              <div className="filler">
+                <center><h2>Other Stats</h2></center>
+                <center>Spotting Ratio: {Data.spotted} </center>
+                <center>Max XP: {Data.maxXP} </center>
+                <center>Shots: {Data.shots} </center>
+                <center>Hits: {Data.hits} </center>
+                <center>Total XP: {Data.totalXP} </center>
+                <center>Last Battle: {Data.lastBattle} </center>
+              </div>
             </div>
           </div>
         </div>
